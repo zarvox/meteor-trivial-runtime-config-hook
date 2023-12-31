@@ -1,5 +1,10 @@
 import { Meteor } from 'meteor/meteor';
+import { WebApp } from 'meteor/webapp';
 import { LinksCollection } from '/imports/api/links';
+
+// The hook doesn't have to do anything; just adding it gets you [object
+// Promise] for __meteor_runtime_config__
+WebApp.addRuntimeConfigHook(() => {});
 
 async function insertLink({ title, url }) {
   await LinksCollection.insertAsync({ title, url, createdAt: new Date() });
